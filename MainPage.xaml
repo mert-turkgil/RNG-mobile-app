@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RNG.MainPage"
+             Title="MQTT Demo">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            
+            <!-- Bağlantı Durumu -->
+            <Frame BackgroundColor="#1E1E1E" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🔌 MQTT Bağlantı Durumu" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label x:Name="ConnectionStatusLabel" Text="❌ Bağlı Değil" FontSize="16" TextColor="#FF6B6B"/>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Button x:Name="ConnectBtn" Text="Bağlan" Clicked="OnConnectClicked" 
+                                BackgroundColor="#4CAF50" TextColor="White" WidthRequest="120"/>
+                        <Button x:Name="DisconnectBtn" Text="Kes" Clicked="OnDisconnectClicked" 
+                                BackgroundColor="#f44336" TextColor="White" WidthRequest="120" IsEnabled="False"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Subscribe -->
+            <Frame BackgroundColor="#2D2D2D" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📡 Topic Abone Ol" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Entry x:Name="SubscribeTopicEntry" Placeholder="Topic girin (örn: rng/test)" 
+                           Text="rng/test" TextColor="White" PlaceholderColor="Gray"/>
+                    <Button Text="Abone Ol" Clicked="OnSubscribeClicked" 
+                            BackgroundColor="#2196F3" TextColor="White"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Publish -->
+            <Frame BackgroundColor="#2D2D2D" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📤 Mesaj Gönder" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Entry x:Name="PublishTopicEntry" Placeholder="Topic" Text="rng/test" 
+                           TextColor="White" PlaceholderColor="Gray"/>
+                    <Entry x:Name="MessageEntry" Placeholder="Mesaj" 
+                           TextColor="White" PlaceholderColor="Gray"/>
+                    <Button Text="Gönder" Clicked="OnPublishClicked" 
+                            BackgroundColor="#FF9800" TextColor="White"/>
+                    <Button Text="Test Verisi Gönder" Clicked="OnPublishTestDataClicked" 
+                            BackgroundColor="#9C27B0" TextColor="White"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Gelen Mesajlar -->
+            <Frame BackgroundColor="#1E1E1E" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout>
+                        <Label Text="📩 Gelen Mesajlar" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                        <Button Text="Temizle" Clicked="OnClearMessagesClicked" 
+                                BackgroundColor="Transparent" TextColor="#FF6B6B" 
+                                FontSize="12" Margin="10,0,0,0"/>
+                    </HorizontalStackLayout>
+                    <Label x:Name="MessagesLabel" Text="Henüz mesaj yok..." 
+                           TextColor="#888" FontSize="14"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
